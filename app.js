@@ -20,7 +20,7 @@ const game = {
 
         do {
             guess = parseInt(
-                prompt `Enter a guess between ${this.smallestNum} and ${this.biggestNum}`
+                prompt `Enter a guess between  1 ${this.smallestNum} and 100 ${this.biggestNum}`
             )
 
         }
@@ -28,8 +28,25 @@ const game = {
             guess > this.biggestNum || guess < this.smallestNum
         )
         return guess
-    }
-    render: function () {},
-  }
+    },
+    render: function () {
+        let message 
 
+        if (this.prevGuesses[this.prevGuesses.length - 1] === this.secretNum){
+
+            message = `Congrats! You guessed the number! ${this.prevGuesses.length} times`
+        }
+        if (this.prevGuesses[this.prevGuesses.length - 1] > this.secretNum){
+
+            message = `Your guess is too high! ${this.prevGuesses.length} times`
+        }
+
+        if (this.prevGuesses[this.prevGuesses.length - 1] < this.secretNum){
+
+            message = `Your guess is too low! ${this.prevGuesses.length} times`
+
+    }
+    alert(message)
+  }
+}
   game.play()
